@@ -27,8 +27,7 @@ export const BrandIcon = props => (
 export const Brand = props => (
   <NavbarBrand tag={Link} to="/" className="brand-logo">
     <BrandIcon />
-    <span className="brand-title">Jblog</span>
-    <span className="navbar-version">{appConfig.VERSION}</span>
+    <span className="brand-title">A blog dedicated to all things JHipster!</span>
   </NavbarBrand>
 );
 

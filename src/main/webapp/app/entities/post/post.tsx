@@ -1,17 +1,20 @@
-import './home.css';
-
 import React from 'react';
-import { Link } from 'react-router-dom';
-
 import { connect } from 'react-redux';
-import { Row, Col, Alert, Button, Table } from 'reactstrap';
-
-import { IRootState } from 'app/shared/reducers';
-import { getEntities } from 'app/entities/post/post.reducer';
-import { IPostProps } from 'app/entities/post/post';
+import { Link, RouteComponentProps } from 'react-router-dom';
+import { Button, Col, Row, Table } from 'reactstrap';
+// tslint:disable-next-line:no-unused-variable
+import { byteSize, ICrudGetAllAction } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export class Home extends React.Component<IPostProps> {
+import { IRootState } from 'app/shared/reducers';
+import { getEntities } from './post.reducer';
+import { IPost } from 'app/shared/model/post.model';
+// tslint:disable-next-line:no-unused-variable
+import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
+
+export interface IPostProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
+
+export class Post extends React.Component<IPostProps> {
   componentDidMount() {
     this.props.getEntities();
   }
@@ -86,4 +89,4 @@ type DispatchProps = typeof mapDispatchToProps;
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home);
+)(Post);
